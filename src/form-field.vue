@@ -10,7 +10,7 @@
 		      :placeholder="field.placeholder"
 		      :rules="validationRules.email"
 		      @blur="onBlur"
-		      @change="onChange"
+		      @change="onChange(field)"
 		      @focus="onFocus"
 		      @input="onInput"
 		    ></v-text-field>
@@ -28,7 +28,7 @@
               :append-icon-cb="appendPasswordIconCheckbox()"
               :type="field.passwordVisible ? 'text' : 'password'"
 		      @blur="onBlur"
-		      @change="onChange"
+		      @change="onChange(field)"
 		      @focus="onFocus"
 		      @input="onInput"              
 		    ></v-text-field>
@@ -39,6 +39,7 @@
               v-model="localValue"
               :items="field.values"
               :label="field.label"
+	       @change="onChange (field)"
 		      :required="field.required"
 		      :readonly="field.readonly"
 		      :disabled="field.disabled"
@@ -53,6 +54,7 @@
 		    <v-checkbox
               v-model="localValue"
               :label="field.label"
+	       @change="onChange (field)"
 		      :required="field.required"
 		      :disabled="field.disabled"
             ></v-checkbox>
@@ -69,7 +71,7 @@
 		      multi-line
 		      v-bind:textarea="field.featured"
 		      @blur="onBlur"
-		      @change="onChange"
+		      @change="onChange(field)"
 		      @focus="onFocus"
 		      @input="onInput"		      
 		    ></v-text-field>
@@ -86,7 +88,7 @@
 			  :counter="field.counter"
 			  :hint="field.hint"
 		      @blur="onBlur"
-		      @change="onChange"
+		      @change="onChange(field)"
 		      @focus="onFocus"
 		      @input="onInput"			  
 		    ></v-text-field>
@@ -128,8 +130,8 @@
 			onBlur: function(){
 				this.$emit('blur')
 			},
-			onChange: function(){
-				this.$emit('change')
+			onChange: function(field){
+				this.$emit('change', { field: field, value: this.localValue } )
 			},
 			onFocus: function(){
 				this.$emit('focus')
