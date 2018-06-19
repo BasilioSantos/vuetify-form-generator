@@ -76,7 +76,22 @@
 		      @input="onInput"		      
 		    ></v-text-field>
 		</div>
-
+		<div v-else-if="field.type == 'mask'">
+			 <v-text-field
+		      v-model="localValue"
+		      :label="field.label"
+		      :required="field.required"
+		      :readonly="field.readonly"
+			  :mask='field.mask'
+		      :disabled="field.disabled"
+		      :placeholder="field.placeholder"
+		      v-bind:textarea="field.featured"
+		      @blur="onBlur"
+		      @change="onChange(field)"
+		      @focus="onFocus"
+		      @input="onInput"		      
+		    ></v-text-field>
+		</div>
 		<div v-else>
 			 <v-text-field
 		      v-model="localValue"

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <v-form model="valid">
         <div v-for="(schemaItem, schemaItemIndex) in schema" :key='schemaItemIndex'>
             <div v-if="schemaItemIndex == 'groups'">
                 <v-tabs>
@@ -26,7 +26,8 @@
                                     @blur="onBlur"
                                     @change="onChange"
                                     @focus="onFocus"
-                                    @input="onInput"/>
+                                    @input="onInput"
+                                    />
                               </div>
                             </div>
                         </v-tabs-content>
@@ -40,7 +41,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </v-form>
 </template>
 
 <script>
@@ -49,7 +50,8 @@
         props: {
             'model': Object,
             'schema': Object,
-            'options': Object
+            'options': Object,
+            'valid': Boolean
         },
         components: {
             'v-form-generator-field': require('./form-field.vue').default
