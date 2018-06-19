@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-for="(schemaItem, schemaItemIndex) in schema">
+        <div v-for="(schemaItem, schemaItemIndex) in schema" :key='schemaItemIndex'>
             <div v-if="schemaItemIndex == 'groups'">
                 <v-tabs>
                     <v-tabs-bar class="cyan" dark>
@@ -19,7 +19,7 @@
                           :key="group.key"
                           :id="group.key">
                             <div class="ma-3">
-                              <div v-for="field in group.fields">
+                              <div v-for="(index, field) in group.fields" :key='index'>
                                 <v-form-generator-field 
                                     :field="field" 
                                     :value="model[field.model]"
@@ -35,7 +35,7 @@
 
             </div>
             <div v-if="schemaItemIndex == 'fields'">
-                <div v-for="field in schemaItem">
+                <div v-for="(index,field) in schemaItem" :key='index'>
                     <v-form-generator-field :field="field" :value="model[field.model]" @change="onChange"></v-form-generator-field>
                 </div>
             </div>
