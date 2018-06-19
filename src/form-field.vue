@@ -39,7 +39,7 @@
               v-model="localValue"
               :items="field.values"
               :label="field.label"
-	       @change="onChange (field)"
+	       @change="onChange(field)"
 		      :required="field.required"
 		      :readonly="field.readonly"
 		      :disabled="field.disabled"
@@ -54,7 +54,7 @@
 		    <v-checkbox
               v-model="localValue"
               :label="field.label"
-	       @change="onChange (field)"
+	       @change="onChange(field)"
 		      :required="field.required"
 		      :disabled="field.disabled"
             ></v-checkbox>

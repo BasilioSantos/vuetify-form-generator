@@ -36,7 +36,7 @@
             </div>
             <div v-if="schemaItemIndex == 'fields'">
                 <div v-for="field in schemaItem">
-                    <v-form-generator-field :field="field" :value="model[field.model]"></v-form-generator-field>
+                    <v-form-generator-field :field="field" :value="model[field.model]" @change="onChange"></v-form-generator-field>
                 </div>
             </div>
         </div>
@@ -63,16 +63,16 @@
             // On load
         },
         methods: {
-            onBlur: function(){
+            onBlur(){
                 console.info('blur')
             },
-            onChange: function(){
-                console.info('change')
+            onChange(payload){
+                this.model[payload.field.model] = payload.value
             },
-            onFocus: function(){
+            onFocus(){
                 console.info('focus')
             },
-            onInput: function(){
+            onInput(){
                 console.info('input')
             },
         }
